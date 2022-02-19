@@ -8,4 +8,7 @@
 
 
 
-zeroml
+
+
+
+cookiecutter https://github.com/waynerv/cookiecutter-pypackage.git\n
