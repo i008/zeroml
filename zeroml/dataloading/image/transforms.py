@@ -7,7 +7,6 @@ from timm.models.registry import _model_default_cfgs
 
 def build_post_transform(model: str, mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)):
     if model:
-
         cfg = _model_default_cfgs[model.split("timm/")[-1] if "timm/" in model else model]
         mean = cfg["mean"]
         std = cfg["std"]
