@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 
 import albumentations as A
 from albumentations.pytorch.transforms import ToTensorV2
@@ -43,11 +43,14 @@ def build_visualize_transform(size, augment_level: str):
     return A.Compose([*pre_transform, *augment_transform])
 
 
-def build_training_transform(size, model, augment_level: str) -> A.Compose:
+def build_training_transform(size, model, augment: Union[str, A.Compose]) -> A.Compose:
+
     pre_transform = build_pre_transform(size)
     post_transform = build_post_transform(model)
-    augment_transform = get_augment(augment_level)
-
+    if isinstance(augment, str):
+        augment_transform = get_augment(augment)
+    else:
+        augment_transform = augment
     return A.Compose([*pre_transform, *augment_transform, *post_transform])
 
 

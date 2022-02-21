@@ -9,17 +9,8 @@ import PIL.Image
 
 def save_array_image(np_array, target_path, file_name=None) -> Path:
     """
-
-
-    Parameters
-    ----------
-    np_array
-    target_path
-    file_name
-
-    Returns
-    -------
-
+    Saves a np.array representing an image to disk, cloud or anywhere supported by fsspec.
+    Check save_pil for details.
     """
     pil_image = PIL.Image.fromarray(np_array)
     return save_pil(pil_image, target_path, file_name)
@@ -34,16 +25,11 @@ def save_pil(
     """
 
     Saves a pil image to disk, cloud or anywhere supported by fsspec.
+    If file_name is not specified - generates a random name.
 
-    Parameters
-    ----------
-    pil_image
-    target_paths
-    file_name
-    image_type
-
-    Returns
-    -------
+    For example:
+    target_path=gcs://{bucket_name}/
+    target_path=s3://{bucket_name}/
 
     """
     if file_name is None:
@@ -57,6 +43,7 @@ def save_pil(
     bio = io.BytesIO()
     pil_image.save(bio, image_type)
     pil_image.close()
+
     with fsspec.open(target, "wb") as storage:
         storage.write(bio.getvalue())
 
