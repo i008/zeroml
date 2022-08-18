@@ -581,14 +581,14 @@ trio = ["trio", "async-generator"]
 
 [[package]]
 name = "jinja2"
-version = "3.1.2"
+version = "3.0.0"
 description = "A very fast and expressive template engine."
 category = "main"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.6"
 
 [package.dependencies]
-MarkupSafe = ">=2.0"
+MarkupSafe = ">=2.0.0rc2"
 
 [package.extras]
 i18n = ["Babel (>=2.7)"]
@@ -1800,7 +1800,7 @@ test = ["pytest", "black", "isort", "mypy", "flake8", "flake8-docstrings", "pyte
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8,<4.0"
-content-hash = "c622ad39acdf65369732ac70c54401a922059ded1deb675719f147a4491257ec"
+content-hash = "b4365a7d18d102a22e334ee6418e16ff0ce5141e6507359f2476e268c71f540d"
 
 [metadata.files]
 albumentations = []
