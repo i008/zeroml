@@ -50,6 +50,7 @@ albumentations = {extras = ["imgaug"], version = "^1.1.0"}
 fsspec = "^2022.1.0"
 timm = {version = "^0.5.4", optional = false}
 neptune-client = "^0.14.3"
+Jinja2 = "^3.1.2"
 
 [tool.poetry.extras]
 test = [
