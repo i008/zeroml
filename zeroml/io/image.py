@@ -46,5 +46,14 @@ def save_pil(
 
     with fsspec.open(target, "wb") as storage:
         storage.write(bio.getvalue())
-
     return target
+
+
+def load_to_pil(file: str) -> PIL.Image.Image:
+    """
+
+    Load image to PIL from cloud storage or local file (fsspec)
+
+    """
+    with fsspec.open(file, 'rb') as f:
+        return PIL.Image.open(io.BytesIO(f.read())).convert('RGB')
